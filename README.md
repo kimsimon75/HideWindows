@@ -1,3 +1,5 @@
+<a href="https://www.flaticon.com/kr/free-icons/-" title="오토 자이로 아이콘">오토 자이로 아이콘 제작자: Freepik - Flaticon</a>
+
 오디오 PID 따는 코드 출처 : 아카라이브 neon_nyx 
 
 본 프로그램은 마우스 사이드에 위치한 버튼을 누르게 되면 창 숨김과 보임, 음량 조절이 가능한 프로그램입니다.
