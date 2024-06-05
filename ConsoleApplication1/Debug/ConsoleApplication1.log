@@ -1,0 +1,6 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(514,5): warning MSB8028: 중간 디렉터리(Debug\)에 다른 프로젝트(ConsoleApplication1.vcxproj)에서 공유하는 파일이 포함되어 있습니다.  이로 인해 잘못된 정리 및 다시 빌드 동작이 수행될 수 있습니다.
+  ConsoleApplication1.cpp
+C:\Users\be555\source\repos\ConsoleApplication1\ConsoleApplication1\후킹.h(2,10): warning C4067: 전처리기 지시문 다음에 예기치 않은 토큰이 있습니다. 줄 바꿈 문자가 필요합니다.
+C:\Users\be555\source\repos\ConsoleApplication1\ConsoleApplication1\볼륨 조절.h(104): warning C4715: 'SetApplicationVolume': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\be555\source\repos\ConsoleApplication1\ConsoleApplication1\프로세스 ID 모두 따기.h(79): warning C4715: 'Pids': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  ConsoleApplication1.vcxproj -> C:\Users\be555\source\repos\ConsoleApplication1\Debug\윈도우 숨기기.exe
