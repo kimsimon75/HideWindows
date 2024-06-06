@@ -6,8 +6,6 @@
 
 using namespace std;
 
-
-NOTIFYICONDATA nid;
 template <class T>
 
 
@@ -85,7 +83,6 @@ void CheckPID()
 
 				// 여기서 할 일 하면 됨
 
-				std::wcout << L"PID: " << processId << ", Name: " << processName << std::endl;
 
 				if (m.find(processName) == m.end())
 				{
@@ -126,7 +123,7 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
 			POINT p;
 			GetCursorPos(&p);
 			HMENU hMenu = CreatePopupMenu();
-			AppendMenu(hMenu, MF_STRING, 1, L"닫기");
+			AppendMenu(hMenu, MF_STRING, 1, L"종료");
 			SetForegroundWindow(hwnd);
 			TrackPopupMenu(hMenu, TPM_RIGHTBUTTON, p.x, p.y, 0, hwnd, NULL);
 			PostMessage(hwnd, WM_NULL, 0, 0); // 메뉴가 닫히도록 함
@@ -139,7 +136,7 @@ LRESULT CALLBACK WindowProcedure(HWND hwnd, UINT message, WPARAM wParam, LPARAM 
 		switch (LOWORD(wParam))
 		{
 		case 1:
-			cout << "hello"<< endl;
+			ShowWindowAll();
 			Shell_NotifyIcon(NIM_DELETE, &nid); // 트레이 아이콘 제거
 			DestroyWindow(hwnd);
 			UnhookWindowsHookEx(keyboardHook);
@@ -183,13 +180,13 @@ int main()
 		cout << "failed" << endl;
 		return 1;
 	}
-	wcscpy_s(nid.szTip, L"Tray Example");
+	wcscpy_s(nid.szTip, L"윈도우 숨기기");
 
 	Shell_NotifyIcon(NIM_ADD, &nid);
 
 	thread t1(CheckPID);
 
-	ShowWindow(GetConsoleWindow(), SW_HIDE);
+	ShowWindow(GetConsoleWindow(), SW_SHOW);
 	keyboardHook = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardProc, hInstance, 0);
 
 	mouseHook = SetWindowsHookEx(WH_MOUSE_LL, MouseProc, hInstance, 0);

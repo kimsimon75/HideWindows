@@ -4,6 +4,7 @@
 
 HHOOK keyboardHook;
 HHOOK mouseHook;
+NOTIFYICONDATA nid;
 
 LRESULT __stdcall MouseProc(int nCode, WPARAM wParam, LPARAM lParam)
 {
@@ -53,6 +54,7 @@ LRESULT CALLBACK KeyboardProc(int nCode, WPARAM wParam, LPARAM lParam)
 			{
 				ShowWindow(GetConsoleWindow(), SW_SHOW);
 				ShowWindowAll();
+				Shell_NotifyIcon(NIM_DELETE, &nid);
 				UnhookWindowsHookEx(keyboardHook);
 				UnhookWindowsHookEx(mouseHook);
 				PostMessage(GetConsoleWindow(), WM_CLOSE, NULL, NULL);

@@ -7,13 +7,12 @@
 
 using namespace std;
 
-wstring PN;
 stack<HWND> st = {};
 map<wstring, DWORD> m;
 
-bool func()
+bool func(const wstring& ProcessName)
 {
-	return (PN == L"Explorer.EXE") ? 0 : 1;
+	return (ProcessName == L"Explorer.EXE") ? 0 : 1;
 }
 
 std::wstring GetProcessNameByPID(DWORD processID) {
@@ -54,7 +53,8 @@ void HideWindow()
 
 	DWORD processId;
 	GetWindowThreadProcessId(hWnd, &processId);
-	PN = GetProcessNameByPID(processId);
+
+	wstring PN= GetProcessNameByPID(processId);
 
 	HWND parent = GetParent(hWnd), parent2;
 	while (1) {
@@ -66,8 +66,9 @@ void HideWindow()
 
 	if (parent != 0)
 		hWnd = parent;
-	
-	if (func())
+	wcout << PN << endl;
+	wcout << hWnd << endl;
+	if (func(PN))
 	{
 		st.push(hWnd);
 		ShowWindow(hWnd, SW_HIDE);
@@ -80,7 +81,8 @@ void ShowWindow()
 	{
 		DWORD processId;
 		GetWindowThreadProcessId(st.top(), &processId);
-		PN = GetProcessNameByPID(processId);
+
+		wstring PN = GetProcessNameByPID(processId);
 		SetApplicationVolume(m[PN], 1.0f);
 		
 		ShowWindow(st.top(), SW_SHOW);
